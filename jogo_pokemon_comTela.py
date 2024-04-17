@@ -2,12 +2,10 @@ import random
 import tkinter as tk
 from tkinter import Toplevel, ttk
 
-# Dados e lógica do jogo
 pokemons_caverna = ['Zubat', 'Geodude', 'Onix', 'Diglett', 'Cubone', 'Sableye', 'Dusclops', 'Regidrago', 'Torkoal']
 pokemons_mato = ['Pikachu', 'Rattata', 'Pidgey', 'Bulbasaur', 'Oddish', 'Bellsprout', 'Rellor', 'Togedemaru']
 pokedex = []
 
-# Funções
 def iniciar_aventura():
     nome = nome_entry.get()
     introducao_label.config(text=f"Olá {nome}, eu sou o Professor Carvalho e vou guiá-lo em sua jornada Pokémon!")
@@ -38,7 +36,7 @@ def capturar_pokemon(pokemon, ambiente):
     probabilidade = 50 if ambiente == 'mato' else 35
     
     if 'captura_window' in globals():
-        captura_window.destroy()  # Destruir a janela anterior, se existir
+        captura_window.destroy()
     
     captura_window = Toplevel(root)
     captura_window.title("Captura de Pokémon")
@@ -79,7 +77,6 @@ def ver_pokedex():
     else:
         tk.Label(pokedex_window, text="Sua Pokédex está vazia.").pack(pady=20)
 
-# GUI setup
 root = tk.Tk()
 root.title("Aventura Pokémon")
 
@@ -106,6 +103,6 @@ mato_button = tk.Button(aventura_frame, text="Explorar Mato", command=lambda: ex
 mato_button.pack(side=tk.RIGHT)
 
 ver_pokedex_button = tk.Button(aventura_frame, text="Ver Pokédex", command=ver_pokedex)
-ver_pokedex_button.pack(side=tk.BOTTOM)  # Adicionando o botão para ver a Pokédex
+ver_pokedex_button.pack(side=tk.BOTTOM)
 
 root.mainloop()
