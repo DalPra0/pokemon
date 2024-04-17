@@ -1,5 +1,6 @@
 import random
 import tkinter as tk
+from tkinter import *
 from tkinter import ttk
 
 pokemons_caverna = ['Zubat', 'Geodude', 'Onix', 'Diglett', 'Cubone', 'Sableye', 'Dusclops', 'Regidrago', 'Torkoal']
