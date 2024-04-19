@@ -2,9 +2,11 @@ import random
 import tkinter as tk
 from tkinter import Toplevel, ttk
 
+
 pokemons_caverna = ['Zubat', 'Geodude', 'Onix', 'Diglett', 'Cubone', 'Sableye', 'Dusclops', 'Regidrago', 'Torkoal']
 pokemons_mato = ['Pikachu', 'Rattata', 'Pidgey', 'Bulbasaur', 'Oddish', 'Bellsprout', 'Rellor', 'Togedemaru']
 pokedex = []
+tentativas_extras = 3
 
 def iniciar_aventura():
     nome = nome_entry.get()
@@ -33,12 +35,16 @@ def encontrar_pokemon(ambiente):
     return random.choice(pokemons_caverna if ambiente == 'caverna' else pokemons_mato)
 
 def capturar_pokemon(pokemon, ambiente):
+    global tentativas_extras
+    
     probabilidade = 50 if ambiente == 'mato' else 35
     
     if 'captura_window' in globals():
         captura_window.destroy()
     
     captura_window = Toplevel(root)
+    tentativas_extras = 3
+    
     captura_window.title("Captura de Pokémon")
     
     if pokemon in pokedex:
@@ -51,17 +57,16 @@ def capturar_pokemon(pokemon, ambiente):
             pokedex.append(pokemon)
             msg = f"Parabéns! Você capturou {pokemon}!"
         else:
-            msg = f"Ah não! O Pokémon escapou."
+            msg = f"Ah não! O Pokémon {pokemon} escapou."
+            tentativas_extras -= 1 
             btn_tentar_novamente = tk.Button(captura_window, text="Tentar Capturar Novamente", command=lambda: capturar_pokemon(pokemon, ambiente))
             btn_tentar_novamente.pack(pady=10)
-                    
+            if tentativas_extras == 0:
+                msg = f"Ah não! O Pokémon {pokemon} escapou e você não consegue mais capturar"
     lbl_resultado = tk.Label(captura_window, text=msg)
     lbl_resultado.pack(pady=20)
-    
     btn_fechar = tk.Button(captura_window, text="Fechar", command=captura_window.destroy)
     btn_fechar.pack(side=tk.BOTTOM, pady=10)
-
-
 
 def ver_pokedex():
     pokedex_window = Toplevel(root)
