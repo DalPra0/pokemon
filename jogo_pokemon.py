@@ -26,6 +26,11 @@ def encontrar_pokemon(ambiente):
     else:
         pokemon = random.choice(pokemons_mato)
     print(f"Você encontrou um {pokemon}!")
+    opt = input("Deseja capturar? (sim/não): ")
+    if opt == 'sim':
+        return pokemon
+    elif opt == 'não':
+        return explorar_ambiente
     return pokemon
 
 def tentar_novamente(pokemon, ambiente):
