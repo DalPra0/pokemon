@@ -97,7 +97,7 @@ def listar_pokedex():
 
 def main():
     introducao()
-    escolhapokemon_inicial()  # Adicionando a escolha do Pokémon inicial
+    escolhapokemon_inicial()
     while True:
         escolha = explorar_ambiente()
         pokemon_encontrado = encontrar_pokemon(escolha)
@@ -109,5 +109,4 @@ def main():
             print("Obrigado por jogar!")
             break
 
-# Executar o jogo
 main()
