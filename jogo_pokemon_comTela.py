@@ -74,7 +74,7 @@ def ver_pokedex():
     if pokedex:
         cols = ('#1', '#2')
         tree = ttk.Treeview(pokedex_window, columns=cols, show='headings')
-        tree.heading('#1', text='ID')
+        tree.heading('#1', text='Nome')
         tree.heading('#2', text='Nome')
         for idx, nome in enumerate(pokedex, start=1):
             tree.insert("", "end", values=(idx, nome))
